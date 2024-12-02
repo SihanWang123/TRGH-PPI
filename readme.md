@@ -20,8 +20,6 @@ The three datasets (SHS27k, SHS148k and STRING) are stored in the dataset folder
 
 # PPI Prediction
 
-Example: predicting unknown PPIs in SHS27k datasets with native structures:
-
 ## Using Processed Data for SHS27k Dataset
 
 Download  `protein.actions.SHS27k.STRING.pro2.txt`, `protein.SHS27k.sequences.dictionary.pro3.tsv`, `edge_list_12`, `x_list` and `vec5_CTC.txt` to `./TRGH-PPI/protein_info/`.

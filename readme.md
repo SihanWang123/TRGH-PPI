@@ -8,7 +8,7 @@ pip install scikit-learn
 pip install tensorboardX
 ```
 # Datasets
-Three datasets (SHS27k, SHS148k and STRING) can be downloaded from the [Google Drive](https://drive.google.com/drive/folders/1Yb-fdWJ5vTe0ePAGNfrUluzO9tz1lHIF?usp=sharing):
+The three datasets (SHS27k, SHS148k and STRING) are stored in the dataset folder.
 * `protein.actions.SHS27k.STRING.pro2.txt`             PPI network of SHS27k
 * `protein.SHS27k.sequences.dictionary.pro3.tsv`      Protein sequences of SHS27k
 * `protein.actions.SHS148k.STRING.txt`             PPI network of SHS148k

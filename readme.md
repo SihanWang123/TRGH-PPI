@@ -24,7 +24,7 @@ Example: predicting unknown PPIs in SHS27k datasets with native structures:
 
 ## Using Processed Data for SHS27k Dataset
 
-Download  `protein.actions.SHS27k.STRING.pro2.txt`, `protein.SHS27k.sequences.dictionary.pro3.tsv`, `edge_list_12`, `x_list` and `vec5_CTC.txt` to `./HIGH-PPI-main/protein_info/`.
+Download  `protein.actions.SHS27k.STRING.pro2.txt`, `protein.SHS27k.sequences.dictionary.pro3.tsv`, `edge_list_12`, `x_list` and `vec5_CTC.txt` to `./TRGH-PPI/protein_info/`.
 
 ## Data Processing for New Datasets (if applicable)
 Prepare all related PDB files. Native protein structures can be downloaded in batches from the [RCSB PDB](https://www.rcsb.org/downloads), and predicted protein structures with errors can be downloaded from the [AlphaFold database](https://alphafold.ebi.ac.uk/). Put all of the PDB files in `./protein_info/`.
@@ -39,7 +39,7 @@ python ./protein_info/generate_feat.py
 ```
 
 ## Training
-To predict PPIs, use 'model_train.py' script to train HIGH-PPI with the following options:
+To predict PPIs, use 'model_train.py' script to train TRGH-PPI with the following options:
 * `ppi_path`             str, PPI network information
 * `pseq_path`             str, Protein sequences
 * `p_feat_matrix`       str, The feature matrix of all protein graphs
@@ -51,7 +51,7 @@ To predict PPIs, use 'model_train.py' script to train HIGH-PPI with the followin
 python model_train.py --ppi_path ./protein_info/protein.actions.SHS27k.STRING.pro2.txt --pseq ./protein_info/protein.SHS27k.sequences.dictionary.pro3.tsv --split random --p_feat_matrix ./protein_info/x_list.pt --p_adj_matrix ./protein_info/edge_list_12.npy --save_path ./result_save --epoch_num 500
 ```
 ## Testing
-Run 'model_test.py' script to test HIGH-PPI with the following options:
+Run 'model_test.py' script to test TRGH-PPI with the following options:
 * `ppi_path`             str, PPI network information
 * `pseq_path`             str, Protein sequences
 * `p_feat_matrix`       str, The feature matrix of all protein graphs

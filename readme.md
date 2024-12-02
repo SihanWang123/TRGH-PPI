@@ -8,15 +8,15 @@ pip install scikit-learn
 pip install tensorboardX
 ```
 # Datasets
-The three datasets (SHS27k, SHS148k and STRING) are stored in the dataset folder except for the last two.
+The three datasets (SHS27k, SHS148k and STRING) are stored in the dataset folder except for the last two. You can download them from https://drive.google.com/drive/folders/1PwPIakU89eFwYBF4fyKJmx916z3DgLoC?usp=drive_link
 * `protein.actions.SHS27k.STRING.pro2.txt`             PPI network of SHS27k
 * `protein.SHS27k.sequences.dictionary.pro3.tsv`      Protein sequences of SHS27k
 * `protein.actions.SHS148k.STRING.txt`             PPI network of SHS148k
 * `protein.SHS148k.sequences.dictionary.tsv`         Protein sequences of SHS148k
-* `9606.protein.action.v11.0.txt`         PPI network of STRING
 * `protein.STRING_all_connected.sequences.dictionary.tsv`             Protein sequences of STRING
 * `edge_list_12`             Adjacency matrix for all proteins in SHS27k
 * `x_list`             Feature matrix for all proteins in SHS27k
+* `9606.protein.action.v11.0.txt`         PPI network of STRING
 
 # PPI Prediction
 

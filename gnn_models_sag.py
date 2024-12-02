@@ -36,12 +36,12 @@ class dpdGAT(nn.Module):
         x = self.conv2(x, edge_index)
         x = F.relu(self.fc2(x))
         x = self.bn2(x)
-        x = self.conv3(x, edge_index)
-        x = F.relu(self.fc3(x))
-        x = self.bn3(x)
-        x = self.conv4(x, edge_index)
-        x = F.relu(self.fc4(x))
-        x = self.bn4(x)
+        # x = self.conv3(x, edge_index)
+        # x = F.relu(self.fc3(x))
+        # x = self.bn3(x)
+        # x = self.conv4(x, edge_index)
+        # x = F.relu(self.fc4(x))
+        # x = self.bn4(x)
 
         x = F.dropout(x, p, training=self.training)
         node_id = edge_index[:, train_edge_id]

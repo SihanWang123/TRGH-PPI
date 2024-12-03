@@ -13,7 +13,7 @@ from gnn_models_sag import GIN_Net2, ppi_model
 from gnn_data import GNN_DATA
 from gnn_models_sag import GIN_Net2
 from utils import Metrictor_PPI, print_file
-parser = argparse.ArgumentParser(description='HIGH-PPI_model_training')
+parser = argparse.ArgumentParser(description='TRGH-PPI_model_training')
 
 parser.add_argument('--ppi_path', default=None, type=str,
                     help="ppi path")

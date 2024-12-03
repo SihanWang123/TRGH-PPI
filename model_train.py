@@ -271,7 +271,7 @@ def main():
 
     model = ppi_model()
     model.to(device)
-    optimizer = torch.optim.Adam(model.parameters(), lr=0.001, betas=(0.99, 0.99),weight_decay=5e-4)
+    optimizer = torch.optim.Adam(model.parameters(), lr=0.001, weight_decay=1e-4)
 
     scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor=0.5, patience=10,
                                                            verbose=True)

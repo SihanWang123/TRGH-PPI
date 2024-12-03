@@ -12,7 +12,7 @@ from gnn_models_sag import ppi_model
 from utils import Metrictor_PPI, print_file
 from tensorboardX import SummaryWriter
 
-parser = argparse.ArgumentParser(description='HIGH-PPI_model_training')
+parser = argparse.ArgumentParser(description='TRGH-PPI_model_training')
 
 parser.add_argument('--ppi_path', default=None, type=str,
                     help="ppi path")

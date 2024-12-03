@@ -10,7 +10,7 @@ import pickle
 
 
 class dpdGAT(nn.Module):
-    def __init__(self, in_channels=128, out_channels=512, heads=2, dropout=0.5):
+    def __init__(self, in_channels=256, out_channels=1024, heads=2, dropout=0.5):
         super(dpdGAT, self).__init__()
         self.init_x= nn.Linear(in_channels, out_channels)
         self.conv1 = dpdGATConv(out_channels, out_channels, heads, dropout)
@@ -56,7 +56,7 @@ class dpdGAT(nn.Module):
 
 
 class TransGCN(nn.Module):
-    def __init__(self, hidden = 128, heads=2, num_layers=1, weight=1e-2):
+    def __init__(self, hidden = 256, heads=2, num_layers=1, weight=1e-2):
         super(TransGCN, self).__init__()
         self.transformer_layer1 = nn.TransformerEncoderLayer(d_model=hidden, nhead=heads,dim_feedforward=hidden,dropout=0.1,activation="relu")
         self.transformer1 = nn.TransformerEncoder(self.transformer_layer1, num_layers)

@@ -7,7 +7,6 @@ import argparse
 import torch
 import torch.nn as nn
 from gnn_data import GNN_DATA
-# from gnn_models_sag import GIN_Net2, ppi_model
 from gnn_models_sag import ppi_model
 from utils import Metrictor_PPI, print_file
 from tensorboardX import SummaryWriter

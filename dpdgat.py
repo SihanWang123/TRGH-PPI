@@ -103,18 +103,6 @@ class dpdGATConv(MessagePassing):
     def forward(self, x: Union[Tensor, PairTensor], edge_index: Adj,
                 edge_attr: OptTensor = None,
                 return_attention_weights: bool = None):
-        # type: (Union[Tensor, PairTensor], Tensor, OptTensor, NoneType) -> Tensor  # noqa
-        # type: (Union[Tensor, PairTensor], SparseTensor, OptTensor, NoneType) -> Tensor  # noqa
-        # type: (Union[Tensor, PairTensor], Tensor, OptTensor, bool) -> Tuple[Tensor, Tuple[Tensor, Tensor]]  # noqa
-        # type: (Union[Tensor, PairTensor], SparseTensor, OptTensor, bool) -> Tuple[Tensor, SparseTensor]  # noqa
-        r"""Runs the forward pass of the module.
-
-        Args:
-            return_attention_weights (bool, optional): If set to :obj:`True`,
-                will additionally return the tuple
-                :obj:`(edge_index, attention_weights)`, holding the computed
-                attention weights for each edge. (default: :obj:`None`)
-        """
         H, C = self.heads, self.out_channels
 
         x_l: OptTensor = None

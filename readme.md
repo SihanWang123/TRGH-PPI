@@ -1,5 +1,5 @@
 ## Dependencies
-TRGH-PPI runs on Python 3.10. To install all dependencies, directly run:
+TRGH-PPI runs on Python 3.9-3.11. To install all dependencies, directly run:
 ```
 pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
 pip install torch_geometric

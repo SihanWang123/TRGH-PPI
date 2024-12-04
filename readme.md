@@ -46,7 +46,7 @@ To predict PPIs, use 'model_train.py' script to train TRGH-PPI with the followin
 * `save_path`             str, Path for saving models, configs and results
 * 'epoch_num'     int, Training epochs
 ```
-python model_train.py --ppi_path ./protein_info/protein.actions.SHS27k.STRING.pro2.txt --pseq ./protein_info/protein.SHS27k.sequences.dictionary.pro3.tsv --split random --p_feat_matrix ./protein_info/x_list.pt --p_adj_matrix ./protein_info/edge_list_12.npy --save_path ./result_save --epoch_num 500
+python model_train.py --ppi_path ./protein_info/protein.actions.SHS27k.STRING.pro2.txt --pseq ./protein_info/protein.SHS27k.sequences.dictionary.pro3.tsv --split random --p_feat_matrix ./protein_info/x_list.pt --p_adj_matrix ./protein_info/edge_list_12.npy --save_path ./result_save --epoch_num 600
 ```
 ## Testing
 Run 'model_test.py' script to test TRGH-PPI with the following options:

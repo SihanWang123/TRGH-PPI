@@ -7,11 +7,13 @@ import argparse
 import torch
 import torch.nn as nn
 from gnn_data import GNN_DATA
+# from gnn_models_sag import GIN_Net2, ppi_model
 from gnn_models_sag import ppi_model
 from utils import Metrictor_PPI, print_file
 from tensorboardX import SummaryWriter
 
-parser = argparse.ArgumentParser(description='TRGH-PPI_model_training')
+parser = argparse.ArgumentParser(description='HIGH-PPI_model_training')
+
 
 parser.add_argument('--ppi_path', default=None, type=str,
                     help="ppi path")
@@ -29,10 +31,12 @@ parser.add_argument('--save_path', default=None, type=str,
                     help="save folder")
 parser.add_argument('--epoch_num', default=None, type=int,
                     help='train epoch number')
-seed_num = 2
+seed_num = 42
 np.random.seed(seed_num)
 torch.manual_seed(seed_num)
 torch.cuda.manual_seed(seed_num)
+torch.cuda.manual_seed_all(seed_num)
+
 
 def multi2big_x(x_ori):
     x_cat = torch.zeros(1, 7)
@@ -93,8 +97,17 @@ def train(batch, p_x_all, p_edge_all, model, graph, ppi_list, loss_fn, optimizer
     global_step = 0
     global_best_valid_f1 = 0.0
     global_best_valid_f1_epoch = 0
+    # batch = torch.zeros(818994)
     truth_edge_num = graph.edge_index.shape[1] // 2
     count = 1
+    # for i in range(1, 1552):
+    #     num1 = x_num_index[i]
+    #     num1 = num1.int()
+    #     zj = x_num_index[0:i + 1]
+    #     num2 = zj.sum()
+    #     num2 = num2.int()
+    #     batch[num1:num2] = torch.ones(num2 - num1) * count
+    #     count = count + 1
     for epoch in range(epochs):
 
         recall_sum = 0.0
@@ -233,6 +246,7 @@ def train(batch, p_x_all, p_edge_all, model, graph, ppi_list, loss_fn, optimizer
 def main():
     args = parser.parse_args()
     ppi_data = GNN_DATA(ppi_path=args.ppi_path)
+    # ppi_data = GNN_DATA(ppi_path='/apdcephfs/share_1364275/kaithgao/ppi/protein.actions.SHS148k.STRING.txt')
     ppi_data.get_feature_origin(pseq_path=args.pseq_path,
                                 vec_path=args.vec_path)
 
@@ -244,9 +258,12 @@ def main():
 
     graph.train_mask = ppi_data.ppi_split_dict['train_index']
     graph.val_mask = ppi_data.ppi_split_dict['valid_index']
+
+    # p_x_all = torch.load('x_list_pro1.pt')
     p_x_all = torch.load(args.p_feat_matrix)
     p_edge_all = np.load(args.p_adj_matrix, allow_pickle=True)
     p_x_all, x_num_index = multi2big_x(p_x_all)
+    # p_x_all = p_x_all[:,torch.arange(p_x_all.size(1))!=6] 
     p_edge_all, edge_num_index = multi2big_edge(p_edge_all, x_num_index)
 
 
@@ -267,13 +284,16 @@ def main():
 
     graph.to(device)
 
-
+    # model = GIN_Net2(in_len=2000, in_feature=13, gin_in_feature=256, num_layers=1, pool_size=3, cnn_hidden=1).to(device)
     model = ppi_model()
     model.to(device)
-    optimizer = torch.optim.Adam(model.parameters(), lr=0.001, weight_decay=1e-4)
+    optimizer = torch.optim.Adam(model.parameters(), lr=0.001,weight_decay=1e-4)
 
+    # scheduler = None
+    #
     scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor=0.5, patience=10,
                                                            verbose=True)
+    # save_path = './result_save6'
     save_path = args.save_path
     loss_fn = nn.BCEWithLogitsLoss().to(device)
 
